@@ -4,7 +4,7 @@ This repository contains collection of portable ISLISP tests that should be pass
 Each test consists of an input lisp program and expected output text file (note that lisp code isn't portable ISLISP as-is and a preprocessing step is required; see below).
 Test passes if running given program it outputs (through standard output) exactly same content as the text file.
 
-Test runner process:
+.Test runner process
 . Find all files matching `*.lisp` pattern in tests subdirectory;
 . For each file, create a portable ISLISP source input by matching and replacing `(requires "testing.lisp")` with textual content from `tests/testtemplate.lisp.txt`;
 . Run ISLISP code with an ISLISP interpreter, capture its standard output, and compare with corresponding `*.expect.txt` text file;
