@@ -1,0 +1,21 @@
+= ISLISP tests
+
+This repository contains collection of portable ISLISP tests that should be passed by conforming ISLISP implementations.
+Each test consists of an input lisp program and expected output text file (note that lisp code isn't portable ISLISP as-is and a preprocessing step is required; see below).
+Test passes if running given program it outputs (through standard output) exactly same content as the text file.
+
+Test runner process:
+. Find all files matching `*.lisp` pattern in tests subdirectory;
+. For each file, create a portable ISLISP source input by matching and replacing `(requires "testing.lisp")` with textual content from `tests/testtemplate.lisp.txt`;
+. Run ISLISP code with an ISLISP interpreter, capture its standard output, and compare with corresponding `*.expect.txt` text file;
+. If any of tests fail, exit with error code.
+
+== Running on linux
+
+Run `testrunner.sh` script, passing ISLISP invocation command as first argument (make sure to properly quote it for it to be one string).
+Invocation must contain `FILE` token which will be replaced with a path to ISLISP program when executing.
+For example; to run tests with `eisl`, run `./testrunner.sh 'eisl -s FILE'`.
+
+== Running on windows
+
+A windows script isn't yet available. Pull requests welcome.

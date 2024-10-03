@@ -1,0 +1,16 @@
+(requires "testing.lisp")
+
+(let ((p (cons 1 2)))
+    (test-equal (car p) 1)
+    (test-equal (cdr p) 2)
+    (set-car 3 p)
+    (set-cdr 4 p)
+    (test-equal (car p) 3)
+    (test-equal (cdr p) 4)
+    (setf (car p) 5)
+    (setf (cdr p) 6)
+    (test-equal (car p) 5)
+    (test-equal (cdr p) 6))
+
+(format (standard-output) "pair.lisp end")
+(finish-output (standard-output))
